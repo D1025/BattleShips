@@ -1,6 +1,8 @@
 package BattleShips;
 import java.util.Random;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class BattleShips
 {
 
@@ -189,6 +191,7 @@ public class BattleShips
                             if(j1_ran-1 < 0)
                             {
                                 j1_ran+=3;
+
     
                             }
                             macierz[j1_ran-1][j2_ran]=-1;
@@ -243,8 +246,101 @@ public class BattleShips
             {
                 j1_ran = Ran.nextInt(j1);
                 j2_ran = Ran.nextInt(j2);
+                direction = Ran.nextInt(d1) +1;
                 if(!list.Compare(j1_ran, j2_ran))
                 {
+                    switch(direction)
+                    {
+                        case 1:
+                            if(j1_ran-1 < 0)
+                            {
+                                if(list.Compare(j1_ran+1, j2_ran))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran+1][j2_ran]=-1;
+                                list.AddAllOver(j1_ran-1, j2_ran);        
+                            }
+                            else
+                            {
+                                if(list.Compare(j1_ran-1, j2_ran))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran-1][j2_ran]=-1;
+                                list.AddAllOver(j1_ran-1, j2_ran);
+                            }
+                            break;
+                        case 2:
+                            if(j1_ran+1 > 9)
+                            {
+                                if(list.Compare(j1_ran-1, j2_ran))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran-1][j2_ran]=-1;
+                                list.AddAllOver(j1_ran+1, j2_ran);
+                            }
+                            else 
+                            {
+                                if(list.Compare(j1_ran+1, j2_ran))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran+1][j2_ran]=-1;
+                                list.AddAllOver(j1_ran+1, j2_ran);
+                            }
+                            break;
+                        case 3:
+                            if(j2_ran-1 < 0)
+                            {
+                                if(list.Compare(j1_ran, j2_ran+1))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran][j2_ran+1]=-1;
+                                list.AddAllOver(j1_ran, j2_ran-1);
+                            }
+                            else 
+                            {
+                                if(list.Compare(j1_ran, j2_ran-1))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran][j2_ran-1]=-1;
+                                list.AddAllOver(j1_ran, j2_ran-1);
+                            }
+                            break;
+                        case 4:
+                            if(j2_ran+1 > 9)
+                            {
+                                if(list.Compare(j1_ran, j2_ran-1))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran][j2_ran-1]=-1;
+                                list.AddAllOver(j1_ran, j2_ran+1);
+                            }
+                            else 
+                            {
+                                if(list.Compare(j1_ran, j2_ran+1))
+                                {
+                                    j--;
+                                    continue;
+                                }
+                                macierz[j1_ran][j2_ran+1]=-1;
+                                list.AddAllOver(j1_ran, j2_ran+1);
+                            }
+                            break;
+                            
+                    }
                     list.AddAllOver(j1_ran, j2_ran);
                     macierz[j1_ran][j2_ran] = -1;
                 }
@@ -252,44 +348,6 @@ public class BattleShips
                 {
                     j--;
                     continue;
-                }
-                direction = Ran.nextInt(d1) +1;
-                switch(direction)
-                {
-                    case 1:
-                        if(j1_ran-1 < 0)
-                        {
-                            j1_ran+=2;
-    
-                        }
-                        macierz[j1_ran-1][j2_ran]=-1;
-                        list.AddAllOver(j1_ran-1, j2_ran);                       
-                        break;
-                    case 2:
-                        if(j1_ran+1 > 9)
-                        {
-                            j1_ran-=2;
-                        }
-                        macierz[j1_ran+1][j2_ran]=-1;
-                        list.AddAllOver(j1_ran+1, j2_ran);
-                        break;
-                    case 3:
-                        if(j2_ran-1 < 0)
-                        {
-                            j2_ran+=2;
-                        }
-                        macierz[j1_ran][j2_ran-1]=-1;
-                        list.AddAllOver(j1_ran, j2_ran-1);
-                        break;
-                    case 4:
-                        if(j2_ran+1 > 9)
-                        {
-                            j2_ran-=2;
-                        }
-                        macierz[j1_ran][j2_ran+1]=-1;
-                        list.AddAllOver(j1_ran, j2_ran+1);
-                        break;
-                        
                 }
     
             }
