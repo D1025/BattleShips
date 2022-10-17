@@ -1,7 +1,9 @@
 package BattleShips;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.lang.model.util.ElementScanner14;
+
 
 public class BattleShips
 {
@@ -82,6 +84,7 @@ public class BattleShips
     public class Macierz
     {
         Integer[][] macierz;
+        Integer statki = 0;
         Macierz()
         {
             macierz = new Integer [10][10];
@@ -94,10 +97,34 @@ public class BattleShips
                 }
             }
         }
+        public boolean Shoot(Integer xn, Integer yn)
+        {
 
+            if(macierz[xn][yn].equals(-1))
+            {
+                macierz[xn][yn] = 2;
+                statki--;
+            }
+            else if(!macierz[xn][yn].equals(1))
+            {
+                macierz[xn][yn] = 1;
+            }
+            else 
+            {
+                System.out.println("Juz tutaj strzelales! Sprobuj gdzies indziej");
+            }
+
+            if(statki.equals(0))
+            {
+                return false;
+            }
+            return true;
+            
+        }
 
         public void SetStatki()
         {
+            statki = 20;
             Random Ran = new Random();
             List list = new List();
             int j1 = 10;
@@ -433,7 +460,6 @@ public class BattleShips
     Macierz macierz_s = new Macierz();
     public void Rysuj()
     {
-        macierz_s.SetStatki();
         for(Integer i=0; i<11; i++)
         {
             for(Integer n=0; n<11; n++)
@@ -457,7 +483,7 @@ public class BattleShips
                     {
                         System.out.print("[*]");
                     }
-                    else if (macierz_s.macierz[i-1][n-1].equals(-1)) //Destoyed
+                    else if (macierz_s.macierz[i-1][n-1].equals(2)) //Destoyed
                     {
                         System.out.print("[X]");
                     }
@@ -477,7 +503,26 @@ public class BattleShips
     public static void main(String[] args)
     {
         BattleShips obj = new BattleShips();
-        obj.Rysuj();
+        Scanner myObj = new Scanner(System.in);
+        boolean gra = true;
+        String strzal;
+        obj.macierz_s.SetStatki();
+        while(gra)
+        {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            obj.Rysuj();
+            System.out.printf("\n\nGdzie strzelasz(np E7):");
+            strzal =myObj.nextLine();
+            while(strzal.length()>2)
+            {
+                System.out.print("Wrong, Try again: ");
+                strzal =myObj.nextLine();
+            }
+            char[] str = strzal.toCharArray();
+            gra = obj.macierz_s.Shoot((int)str[1]-48, (int)str[0]-65);
+        }
+        System.out.println("CONGRATULIATION YOU WIN!!!");
 
     }
     
