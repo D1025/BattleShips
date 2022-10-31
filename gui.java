@@ -82,6 +82,8 @@ class gui extends JPanel implements Runnable
             }
         }
 
+        
+
     }
 
     public void update()
@@ -89,9 +91,13 @@ class gui extends JPanel implements Runnable
 
         if(mouseH.pressed)
         {
+            if(mouseH.mouseXSh >=0 &&  mouseH.mouseXSh <10 && mouseH.mouseYSh >=0 && mouseH.mouseYSh <10)
             gra = battleShips.macierz_s.Shoot(mouseH.mouseXSh, mouseH.mouseYSh);
             mouseH.pressed = false;  
         }
+
+        if(battleShips.macierz_s.statki.equals(0))
+        gameThread = null;
         
     }
 
@@ -147,7 +153,7 @@ class gui extends JPanel implements Runnable
                 if(i == mouseH.mouseX+1 && mouseH.mouseY+1 == j)
                 {
                     g2.setColor(Color.gray);
-                    g2.fillRect(tileSize*i+5, tileSize*j+5, tileSize+5, tileSize+5);
+                    g2.fillRect(tileSize*i+5, tileSize*j+5, tileSize-13, tileSize-13);
                 }
             }
         }
