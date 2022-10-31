@@ -28,6 +28,7 @@ class gui extends JPanel implements Runnable
     Thread gameThread;
 
     BattleShips battleShips = new BattleShips();
+    PointerInfo m = MouseInfo.getPointerInfo();
     
 
     boolean gra = true;
@@ -57,6 +58,8 @@ class gui extends JPanel implements Runnable
 
         while(gameThread != null)
         {
+            // m = MouseInfo.getPointerInfo();
+            // System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)m.getLocation().getX()/48)+", "+ (int)Math.nextDown((double)m.getLocation().getY()/48) +")");
 
 
 
@@ -82,7 +85,7 @@ class gui extends JPanel implements Runnable
             }
         }
 
-        
+
 
     }
 

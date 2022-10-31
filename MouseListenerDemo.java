@@ -1,8 +1,8 @@
 import javax.swing.*;
-import java.awt.event.MouseListener;
+import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
 
-public class MouseListenerDemo extends JPanel implements MouseListener 
+public class MouseListenerDemo extends JPanel implements MouseInputListener 
 {
 
     int mouseX = -2;
@@ -11,19 +11,10 @@ public class MouseListenerDemo extends JPanel implements MouseListener
     int mouseYSh = -2;
     boolean pressed = false;
 
-    public int mouseGetX(MouseEvent e) 
-    {
-        return (int)Math.nextDown((double)e.getX()/48)-1;
-    }
-
-    public int mouseGetY(MouseEvent e)
-    {
-        return mouseY = (int)Math.nextDown((double)e.getY()/48)-1;
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)e.getX()/48)+", "+ (int)Math.nextDown((double)e.getY()/48) +")");
+        // System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)e.getX()/48)+", "+ (int)Math.nextDown((double)e.getY()/48) +")");
 
     }
 
@@ -37,7 +28,7 @@ public class MouseListenerDemo extends JPanel implements MouseListener
     public void mouseReleased(MouseEvent e) {
         if (mouseX == (int)Math.nextDown((double)e.getX()/48)-1 && mouseY == (int)Math.nextDown((double)e.getY()/48)-1)
         {
-            System.out.println("Klikniete");
+            // System.out.println("Klikniete");
             pressed = true;
             mouseXSh = mouseX;
             mouseYSh = mouseY;            
@@ -49,13 +40,26 @@ public class MouseListenerDemo extends JPanel implements MouseListener
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)e.getX()/48)+", "+ (int)Math.nextDown((double)e.getY()/48) +")");
+
         
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        // System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)e.getX()/48)+", "+ (int)Math.nextDown((double)e.getY()/48) +")");
+        
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        // System.out.println("Mouse Clicked: ("+(int)Math.nextDown((double)e.getX()/48)+", "+ (int)Math.nextDown((double)e.getY()/48) +")");
         
     }
     

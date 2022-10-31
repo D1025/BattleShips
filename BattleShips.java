@@ -1,7 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 
 
 public class BattleShips
@@ -527,6 +526,8 @@ public class BattleShips
         }
         System.out.println("CONGRATULIATION YOU WIN!!!");
 
+
+        myObj.close();
     }
     
 }
