@@ -104,6 +104,10 @@ public class BattleShips
                 macierz[xn][yn] = 2;
                 statki--;
             }
+            else if(macierz[xn][yn].equals(2))
+            {
+                System.out.println("Juz tutaj strzelales! Sprobuj gdzies indziej");
+            }
             else if(!macierz[xn][yn].equals(1))
             {
                 macierz[xn][yn] = 1;
